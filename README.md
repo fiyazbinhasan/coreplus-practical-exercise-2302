@@ -27,7 +27,7 @@
 
 ![Alt text](image.png)
 
-Suggested UI considerations:
+### Suggested UI considerations
 
 1. **Add Tooltips**: Incorporate tooltips or hover-over hints on buttons and icons to provide users with brief explanations of their functions.
 
@@ -67,7 +67,7 @@ Suggested UI considerations:
 
 19. **Mobile-Friendly**: If not already, consider making the application more mobile-friendly to accommodate users on smartphones and tablets.
 
-20. **Documentation**: Provide comprehensive documentation or help guides that users can reference when needed.
+20. **Virtualization**: Consider implementing virtualization to improve performance and reduce the amount of data rendered by the application.
 
 ## coreplus-sample-api
 
@@ -126,6 +126,20 @@ Suggested UI considerations:
      - `IFileService<>` is registered as a singleton using `FileService<>`.
      - `PractitionerService` is registered as a singleton.
      - `AppointmentService` is registered as a singleton.
+
+### Suggested API considerations
+
+1. **Authentication**: Implement authentication to restrict access to sensitive data and protect against unauthorized access.
+2. **Authorization**: Implement authorization to restrict access to specific resources and functionalities based on user roles.
+3. **Input Validation**: Validate user input to prevent malicious attacks and ensure data integrity.
+4. **Error Handling**: Implement clear error messages and validation checks to guide users when they enter incorrect data or make mistakes.
+5. **Logging**: Implement logging to track application usage and errors and troubleshoot issues.
+6. **API Documentation**: Provide comprehensive documentation for the API to help developers understand its features and functionalities.
+7. **API Versioning**: Consider versioning the API to allow for future changes without breaking existing functionality.
+8. **Performance Optimization**: Optimize the API's performance to reduce loading times and improve overall responsiveness.
+9. **Security**: Maintain robust security measures to protect user data and build trust with users.
+10. **Testing**: Implement unit tests and integration tests to ensure that the API functions as expected.
+11. **Pagination**: Consider implementing pagination to improve performance and reduce the amount of data returned by the API. 
 
 ## coreplus-sample-api-test
 
