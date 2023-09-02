@@ -38,7 +38,7 @@ export function PractitionerList({ onPractitionerSelected }: PractitionerListPro
     <div className="flex flex-col">
       <div className="supervisors">
         <div className="border p-2 bg-primary shadow-sm">
-          Supervisor practitioners
+          Supervisor Practitioners
         </div>
         <ul>
           {supervisors.map((s) => (
