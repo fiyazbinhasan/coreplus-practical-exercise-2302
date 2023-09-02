@@ -6,6 +6,7 @@ public static class MapEndpoints
     {
         group.MapGetProfitabilityAnalysis();
         group.MapGetByPractitionerId();
+        group.MapGetById();
         return group;
     }
 }

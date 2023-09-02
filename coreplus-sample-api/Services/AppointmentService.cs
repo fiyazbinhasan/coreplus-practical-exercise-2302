@@ -5,7 +5,8 @@ namespace Coreplus.Sample.Api.Services;
 
 public record ProfitabilityAnalysisDto(long practitioner_id, IEnumerable<RevenueByCostPerMonthDto> revenueByCostPerMonth);
 public record RevenueByCostPerMonthDto(int year, int month, decimal totalRevenue, decimal totalCost);
-public record AppointmentDto(DateTime date, decimal cost, decimal revenue);
+public record AppointmentDto(long id, DateTime date, decimal cost, decimal revenue);
+public record AppointmentDetailsDto(long id, DateTime date, decimal cost, decimal revenue, string client_name, string appointment_type, int duration);
 public class AppointmentService
 {
     public async Task<IEnumerable<ProfitabilityAnalysisDto>> GetProfitabilityAnalysis(long id, DateTime[]? range)
@@ -54,6 +55,24 @@ public class AppointmentService
         if (data == null)
             throw new Exception("Data read error");
 
-        return data.Where(a => a.practitioner_id.Equals(practitionerId)).Select(a => new AppointmentDto(a.date, a.cost, a.revenue));
+        return data.Where(a => a.practitioner_id.Equals(practitionerId))
+            .OrderByDescending(a => a.date)
+            .Select(a => new AppointmentDto(a.id, a.date, a.cost, a.revenue));
+    }
+
+    public async Task<AppointmentDetailsDto?> GetById(long id)
+    {
+        var options = new JsonSerializerOptions();
+        options.Converters.Add(new DateTimeConverterUsingDateTimeParse());
+
+        await using var fileStream = File.OpenRead(@"./Data/appointments.json");
+        var data = await JsonSerializer.DeserializeAsync<Appointment[]>(fileStream, options);
+
+        if (data == null)
+            throw new Exception("Data read error");
+
+        return data.Where(a => a.id.Equals(id))
+            .Select(a => new AppointmentDetailsDto(a.id, a.date, a.cost, a.revenue, a.client_name, a.appointment_type, a.duration))
+            .SingleOrDefault();
     }
 }

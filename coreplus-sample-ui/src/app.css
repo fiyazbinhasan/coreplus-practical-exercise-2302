@@ -1,7 +1,7 @@
 .appshell {
   display: grid;
   grid-template-columns: 240px 1fr;
-  grid-template-rows: 48px 240px 1fr;
+  grid-template-rows: 48px 440px 1fr auto;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
@@ -11,14 +11,17 @@
 }
 .supervisors {
   grid-area: 2 / 1 / 3 / 2;
+  flex: 1;
   @apply border-[1px] border-gray-300 p-2;
 }
 .praclist {
   grid-area: 3 / 1 / 4 / 2;
+  flex: 1;
   @apply border-[1px] border-gray-300 p-2;
 }
 .pracinfo {
   grid-area: 2 / 2 / 4 / 3;
+  flex:1; 
   @apply border-[1px] border-gray-300 p-2;
 }
 
@@ -27,7 +30,24 @@
   height: 100%; /* Fill the container's height */
 }
 
-.appointments {
-  grid-area: 3 / 1 / 4 / 2;
+/* Separate grid container for appointlist and appoint-details */
+.appoint-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1; /* Take up remaining vertical space */
+  @apply border-[1px] border-gray-300;
+  max-height: calc(100vh - 488px); /* Subtract header height */
+  overflow: auto; /* Add a scrollbar when content overflows */
+}
+
+.appointlist {
+  flex: 70%;
   @apply border-[1px] border-gray-300 p-2;
+  overflow: auto;
+}
+
+.appoint-details {
+  flex: 30%;
+  @apply border-[1px] border-gray-300 p-2;
+  overflow: auto;
 }
