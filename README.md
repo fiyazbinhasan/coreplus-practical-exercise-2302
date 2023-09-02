@@ -1,5 +1,7 @@
 # coreplus-practical-exercise-2302
 
+Make sure the ui port is whitelisted in the api project. This sample assumed that the UI is running on port 5173, hence the CORS configuration in the API project is set to allow requests from http://localhost:5173.
+
 ## coreplus-sample-ui
 
 * Import Statements: The code starts with importing necessary libraries, including React, date-fns, and various components, styles, and data models.
